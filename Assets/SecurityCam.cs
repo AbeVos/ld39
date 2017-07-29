@@ -73,8 +73,8 @@ public class SecurityCam : MonoBehaviour
     private void PatrolBehaviour()
     {
         patrolTarget.localPosition = patrolStartPosition +
-            patrolDistance * (Mathf.Cos(patrolSpeed * Mathf.PI * stateTime) * transform.right +
-                Mathf.Sin(patrolSpeed * Mathf.PI * stateTime) * transform.forward);
+            patrolDistance * (Mathf.Cos(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.right +
+                Mathf.Sin(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.forward);
 
         cam.LookAt(patrolTarget, Vector3.up);
 
@@ -93,24 +93,10 @@ public class SecurityCam : MonoBehaviour
             }
         }
 
-        if (patrolForward)
-        {
-            stateTime += Time.deltaTime;
+        Debug.Log(stateTime);
 
-            if (stateTime > -(patrolAngle - 180) / 180)
-            {
-                patrolForward = false;
-            }
-        }
-        else
-        {
-            stateTime -= Time.deltaTime;
-
-            if (stateTime < (patrolAngle - 180) / 180)
-            {
-                patrolForward = true;
-            }
-        }
+        float d = 1 - (patrolAngle / 360);
+        stateTime = (1 - d) * Mathf.Sin(patrolSpeed * Time.time) + d;
     }
 
     private void DetectBehaviour()
