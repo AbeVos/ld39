@@ -106,6 +106,13 @@ public class SecurityCam : MonoBehaviour
         cam.LookAt(patrolTarget, Vector3.up);
 
         light.intensity = Mathf.Lerp(light.intensity, 10, 2f * Time.deltaTime);
+
+        stateTime += Time.deltaTime;
+
+        if (stateTime >= 1f && GameManager.CurrentState == GameManager.State.Game)
+        {
+            GameManager.GameOver();
+        }
     }
 
     private void OffBehaviour()

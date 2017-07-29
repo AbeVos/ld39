@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     private float battery;
     private bool isCharging = false;
-    private float chargeValue = 1f;
 
     public bool IsCharging
     {
@@ -29,15 +28,13 @@ public class Player : MonoBehaviour
 
     protected void Update()
     {
+        if (GameManager.CurrentState != GameManager.State.Game)
+            return;
+
         Vector3 inputDirection = Input.GetAxis("Horizontal") * transform.right + 
             Input.GetAxis("Vertical") * transform.forward;
 
         controller.SimpleMove(inputDirection.normalized);
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GameManager.EndGame();
-        }
 
         if (isCharging)
         {
