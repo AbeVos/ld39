@@ -28,7 +28,10 @@ public class GameManager : MonoBehaviour
     {
         fader = FindObjectOfType<ScreenFader>();
         player = FindObjectOfType<Player>();
+    }
 
+    protected void Start()
+    {
         fader.FadeIn(1f, StartGame);
     }
 
