@@ -45,6 +45,8 @@ public class ScreenFader : MonoBehaviour
             if (t >= 1f) break;
         }
 
+        faderImage.color = invisible;
+
         callback();
     }
 
@@ -54,16 +56,16 @@ public class ScreenFader : MonoBehaviour
 
         float t = 0;
 
-        while (true)
+        while (t < 1f)
         {
             faderImage.color = Color.Lerp(invisible, opaque, t);
 
             t += Time.deltaTime / time;
 
             yield return new WaitForEndOfFrame();
-
-            if (t >= 1f) break;
         }
+
+        faderImage.color = opaque;
 
         callback();
     }
