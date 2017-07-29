@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float chargeRate = 5f;
 
-    private Camera camera;
+    new private Camera camera;
     private CharacterController controller;
 
     private float battery;

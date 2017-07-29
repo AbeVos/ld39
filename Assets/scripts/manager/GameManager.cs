@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public static void GameOver()
     {
         SetState(State.FadeOut);
-        fader.FadeOut(1f, EndGame);
+        fader.FadeOut(3f, EndGame);
     }
 
     private void StartGame()

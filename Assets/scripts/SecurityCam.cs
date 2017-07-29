@@ -52,8 +52,6 @@ public class SecurityCam : MonoBehaviour
 
     protected void Update()
     {
-        //cam.localEulerAngles = 45f * Mathf.Sin(Time.time) * Vector3.up;
-
         switch (currentState)
         {
             case State.Patrol:
@@ -70,12 +68,14 @@ public class SecurityCam : MonoBehaviour
 
     private void PatrolBehaviour()
     {
+        // Move target to make camera rotate
         patrolTarget.localPosition = patrolStartPosition +
             patrolDistance * (Mathf.Cos(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.right +
                 Mathf.Sin(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.forward);
 
         cam.LookAt(patrolTarget, Vector3.up);
 
+        // Cast random rays to check for player
         RaycastHit hit;
 
         for (int i = 0; i < 200; i++)
@@ -91,14 +91,14 @@ public class SecurityCam : MonoBehaviour
             }
         }
 
-        //Debug.Log(stateTime);
-
+        // Move time smoothly up and down
         float d = 1 - (patrolAngle / 360);
         stateTime = (1 - d) * Mathf.Sin(patrolSpeed * Time.time) + d;
     }
 
     private void DetectBehaviour()
     {
+        // Move target to player
         patrolTarget.position = Vector3.Lerp(patrolTarget.position,
             GameManager.Player.transform.position,
             5f * Time.deltaTime);
@@ -109,7 +109,8 @@ public class SecurityCam : MonoBehaviour
 
         stateTime += Time.deltaTime;
 
-        if (stateTime >= 1f && GameManager.CurrentState == GameManager.State.Game)
+        // Send game over signal after a short time
+        if (stateTime >= 2f && GameManager.CurrentState == GameManager.State.Game)
         {
             GameManager.GameOver();
         }
@@ -137,6 +138,9 @@ public class SecurityCam : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sample a random unit vector from the cone defined by direction and theta
+    /// </summary>
     private Vector3 ConeVector(Vector3 direction, float theta)
     {
         float z = Random.Range(Mathf.Cos(Mathf.Deg2Rad * lightAngle / 2), 1);
@@ -147,6 +151,7 @@ public class SecurityCam : MonoBehaviour
         float y = z_ * Mathf.Sin(phi);
 
         Vector3 vector = new Vector3(x, y, z);
+        // Rotate the random vector in the direction space
         Quaternion rotation = Quaternion.FromToRotation(Vector3.forward, direction);
         vector = rotation * vector;
 
