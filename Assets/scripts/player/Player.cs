@@ -17,5 +17,10 @@ public class Player : MonoBehaviour
             Input.GetAxis("Vertical") * transform.forward;
 
         controller.SimpleMove(inputDirection);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.EndGame();
+        }
     }
 }
