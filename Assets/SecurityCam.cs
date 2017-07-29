@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class SecurityCam : MonoBehaviour
 {
+    private enum State
+    {
+        Patrol,
+        Off,
+        Detect
+    };
+
     [SerializeField]
     private Transform lightCone;
     [SerializeField]
@@ -11,11 +18,24 @@ public class SecurityCam : MonoBehaviour
     [SerializeField]
     private float lightAngle = 45f;
 
+    [Space]
+    [SerializeField, Range(0, 360)]
+    private float patrolAngle = 180f;
+    [SerializeField]
+    private float patrolSpeed = 1f;
+    [SerializeField]
+    private float patrolDistance = 1f;
+
+    private State currentState = State.Patrol;
+    private float stateTime = 0f;
+
     private Transform cam;
     private Transform patrolTarget;
     private Vector3 patrolStartPosition;
 
-    private Light light;
+    new private Light light;
+
+    private bool patrolForward = true;
 
     protected void Awake()
     {
@@ -36,10 +56,109 @@ public class SecurityCam : MonoBehaviour
     {
         //cam.localEulerAngles = 45f * Mathf.Sin(Time.time) * Vector3.up;
 
+        switch (currentState)
+        {
+            case State.Patrol:
+                PatrolBehaviour();
+                break;
+            case State.Detect:
+                DetectBehaviour();
+                break;
+            case State.Off:
+                OffBehaviour();
+                break;
+        }
+    }
+
+    private void PatrolBehaviour()
+    {
         patrolTarget.localPosition = patrolStartPosition +
-            4f * (Mathf.Abs(Mathf.Sin(0.5f * Time.time)) * transform.forward +
-                Mathf.Cos(0.5f * Time.time) * transform.right);
+            patrolDistance * (Mathf.Cos(patrolSpeed * Mathf.PI * stateTime) * transform.right +
+                Mathf.Sin(patrolSpeed * Mathf.PI * stateTime) * transform.forward);
 
         cam.LookAt(patrolTarget, Vector3.up);
+
+        RaycastHit hit;
+
+        for (int i = 0; i < 200; i++)
+        {
+            Vector3 direction = ConeVector(cam.forward, lightAngle);
+
+            Ray ray = new Ray(transform.position, direction);
+
+            if (Physics.Raycast(ray, out hit, lightRange) && hit.collider.tag == "Player")
+            {
+                currentState = State.Detect;
+                break;
+            }
+        }
+
+        if (patrolForward)
+        {
+            stateTime += Time.deltaTime;
+
+            if (stateTime > -(patrolAngle - 180) / 180)
+            {
+                patrolForward = false;
+            }
+        }
+        else
+        {
+            stateTime -= Time.deltaTime;
+
+            if (stateTime < (patrolAngle - 180) / 180)
+            {
+                patrolForward = true;
+            }
+        }
+    }
+
+    private void DetectBehaviour()
+    {
+        patrolTarget.position = Vector3.Lerp(patrolTarget.position,
+            GameManager.Player.transform.position,
+            5f * Time.deltaTime);
+
+        cam.LookAt(patrolTarget, Vector3.up);
+
+        light.intensity = Mathf.Lerp(light.intensity, 10, 2f * Time.deltaTime);
+    }
+
+    private void OffBehaviour()
+    {
+    }
+
+    private void SetState(State newState)
+    {
+        State oldState = currentState;
+
+        currentState = newState;
+        stateTime = 0f;
+
+        if (newState == State.Off)
+        {
+            //TODO: Turn off lamps
+        }
+
+        if (oldState == State.Off)
+        {
+            //TODO: Turn on lamps
+        }
+    }
+
+    private Vector3 ConeVector(Vector3 direction, float theta)
+    {
+        float z = Random.Range(Mathf.Cos(Mathf.Deg2Rad * lightAngle / 2), 1);
+        float phi = Random.Range(0, 2 * Mathf.PI);
+
+        float z_ = Mathf.Sqrt(1 - Mathf.Pow(z, 2));
+        float x = z_ * Mathf.Cos(phi);
+        float y = z_ * Mathf.Sin(phi);
+
+        Vector3 vector = new Vector3(x, y, z);
+        Quaternion rotation = Quaternion.FromToRotation(Vector3.forward, direction);
+        vector = rotation * vector;
+
+        return vector;
     }
 }

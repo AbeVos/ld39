@@ -283,7 +283,7 @@ Light:
   m_SpotAngle: 20
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -332,3 +332,6 @@ MonoBehaviour:
   lightCone: {fileID: 4545665853265364}
   lightRange: 8
   lightAngle: 30
+  patrolAngle: 90
+  patrolSpeed: 1
+  patrolDistance: 1
