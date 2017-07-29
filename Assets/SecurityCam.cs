@@ -35,8 +35,6 @@ public class SecurityCam : MonoBehaviour
 
     new private Light light;
 
-    private bool patrolForward = true;
-
     protected void Awake()
     {
         cam = transform.GetChild(0);
@@ -93,7 +91,7 @@ public class SecurityCam : MonoBehaviour
             }
         }
 
-        Debug.Log(stateTime);
+        //Debug.Log(stateTime);
 
         float d = 1 - (patrolAngle / 360);
         stateTime = (1 - d) * Mathf.Sin(patrolSpeed * Time.time) + d;
