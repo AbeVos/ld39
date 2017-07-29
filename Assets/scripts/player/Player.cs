@@ -5,10 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    private float selectionRange = 1f;
+
+    [Space]
+    [SerializeField]
     private float maxBattery = 10f;
     [SerializeField]
     private float chargeRate = 5f;
 
+    new private Camera camera;
     private CharacterController controller;
 
     private float battery;
@@ -21,6 +26,7 @@ public class Player : MonoBehaviour
 
     protected void Awake()
     {
+        camera = GetComponentInChildren<Camera>();
         controller = GetComponent<CharacterController>();
 
         battery = maxBattery;
@@ -31,11 +37,13 @@ public class Player : MonoBehaviour
         if (GameManager.CurrentState != GameManager.State.Game)
             return;
 
+        // Movement
         Vector3 inputDirection = Input.GetAxis("Horizontal") * transform.right + 
             Input.GetAxis("Vertical") * transform.forward;
 
         controller.SimpleMove(inputDirection.normalized);
 
+        // Battery management
         if (isCharging)
         {
             battery += Time.deltaTime * chargeRate;
@@ -52,6 +60,19 @@ public class Player : MonoBehaviour
         else
         {
             battery -= Time.deltaTime;
+        }
+
+        // Hacking interface
+        RaycastHit hit;
+
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward,
+            out hit, selectionRange))
+        {
+            HackInterface hackable = hit.collider.GetComponent<HackInterface>();
+            if (hackable != null && Input.GetMouseButtonDown(0))
+            {
+                hackable.Activate();
+            }
         }
     }
 
