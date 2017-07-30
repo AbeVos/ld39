@@ -80,4 +80,11 @@ public class Player : MonoBehaviour
     {
         GUI.Label(new Rect(10, 10, 100, 40), "Battery: " + battery);
     }
+
+    public void Checkpoint()
+    {
+        Debug.Log("Change position");
+        transform.position = GameManager.Checkpoint.transform.position;
+        transform.rotation = GameManager.Checkpoint.transform.rotation;
+    }
 }

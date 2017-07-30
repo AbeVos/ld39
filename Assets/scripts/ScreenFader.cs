@@ -47,7 +47,8 @@ public class ScreenFader : MonoBehaviour
 
         faderImage.color = invisible;
 
-        callback();
+        if (callback != null)
+            callback();
     }
 
     private IEnumerator FadeOutCoroutine(float time, Action callback)
@@ -67,6 +68,7 @@ public class ScreenFader : MonoBehaviour
 
         faderImage.color = opaque;
 
-        callback();
+        if (callback != null)
+            callback();
     }
 }
