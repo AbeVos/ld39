@@ -183,4 +183,23 @@ public class SecurityCam : MonoBehaviour, IHackable
     {
         SetState(State.Patrol);
     }
+
+
+    private void OnDrawGizmos()
+    {
+        //Gizmos.matrix = transform.localToWorldMatrix;
+        //Vector3 last = patrolDistance * (Mathf.Cos(Mathf.PI * 0 - 0.5f * Mathf.PI) * Vector3.right + Mathf.Sin(Mathf.PI * 0 - 0.5f * Mathf.PI) * Vector3.forward);
+
+        //float d = 1 - (patrolAngle / 360);
+        //stateTime = (1 - d) * Mathf.Sin(patrolSpeed * Time.time) + d;
+
+        //for (float i = 0; i < 2f; i += 0.1f)
+        //{
+        //    stateTime += i;
+        //    Vector3 newVec = patrolDistance * (Mathf.Cos(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.right + Mathf.Sin(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.forward);
+        //    Gizmos.DrawLine(last, newVec);
+        //    last = newVec;
+        //}
+
+    }
 }
