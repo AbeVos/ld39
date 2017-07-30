@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4d32caebbf4f54d81ab9a276a9a3f05a
-timeCreated: 1501426445
+guid: e73b2d5cad8d24fad8518fbc4e3604f1
+timeCreated: 1501437117
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: watercooler
+    4300000: table
     6400000: //RootNode
   materials:
     importMaterials: 0
