@@ -67,16 +67,16 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Hacking interface
+        // Activatables
         RaycastHit hit;
 
         if (Physics.Raycast(camera.transform.position, camera.transform.forward,
             out hit, selectionRange))
         {
-            HackInterface hackable = hit.collider.GetComponent<HackInterface>();
-            if (hackable != null && Input.GetMouseButtonDown(0))
+            IActivatable activatable = hit.collider.GetComponent<IActivatable>();
+            if (activatable != null && Input.GetMouseButtonDown(0))
             {
-                hackable.Activate();
+                activatable.Activate();
             }
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HackInterface : MonoBehaviour
+public class HackInterface : MonoBehaviour, IActivatable
 {
     [SerializeField]
     private GameObject target;
