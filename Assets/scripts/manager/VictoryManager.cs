@@ -8,6 +8,7 @@ public class VictoryManager : MonoBehaviour
     [SerializeField]
     private Texture[] images;
 
+    private ScreenFader fader;
     private RawImage rawImage;
     private int currentIdx;
 
@@ -15,9 +16,10 @@ public class VictoryManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
+        fader = FindObjectOfType<ScreenFader>();
         rawImage = GetComponent<RawImage>();
 
-        //rawImage.texture = images[Random.Range(0, images.Length)];
+        fader.FadeIn(1f, null);
         StartCoroutine(ImageSwapCoroutine());
     }
 
