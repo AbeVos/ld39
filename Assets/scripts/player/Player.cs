@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float selectionRange = 1f;
+    [SerializeField]
+    private float speed = 1f;
 
     [Space]
     [SerializeField]
@@ -15,7 +17,10 @@ public class Player : MonoBehaviour
 
     new private Camera camera;
     private CharacterController controller;
+    private AudioSource audio;
     private Tooltip tooltip;
+
+    private Vector3 velocity = Vector3.zero;
 
     private float battery;
     private bool isCharging = false;
@@ -31,6 +36,7 @@ public class Player : MonoBehaviour
     {
         camera = GetComponentInChildren<Camera>();
         controller = GetComponent<CharacterController>();
+        audio = GetComponent<AudioSource>();
         tooltip = FindObjectOfType<Tooltip>();
 
         battery = maxBattery;
@@ -42,10 +48,25 @@ public class Player : MonoBehaviour
             return;
 
         // Movement
-        Vector3 inputDirection = Input.GetAxis("Horizontal") * transform.right + 
-            Input.GetAxis("Vertical") * transform.forward;
+        Vector3 inputDirection = Mathf.Round(Input.GetAxis("Horizontal")) * transform.right + 
+            Mathf.Round(Input.GetAxis("Vertical")) * transform.forward;
 
-        controller.SimpleMove(inputDirection.normalized);
+        velocity = Vector3.Lerp(velocity, speed * inputDirection.normalized,
+            5f * Time.deltaTime);
+
+        controller.SimpleMove(velocity);
+        if (controller.velocity.sqrMagnitude > 0.0001f)
+        {
+            if (!audio.isPlaying)
+                audio.Play();
+            else
+                audio.pitch = Mathf.Clamp(controller.velocity.magnitude, 0, 10);
+        }
+        else
+        {
+            if (audio.isPlaying)
+                audio.Stop();
+        }
 
         // Battery management
         if (isCharging)
@@ -77,7 +98,6 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(camera.transform.position, camera.transform.forward,
             out hit, selectionRange))
         {
-            Debug.Log(hit.collider.name);
             IActivatable activatable = hit.collider.GetComponent<IActivatable>();
             if (activatable != null)
             {
