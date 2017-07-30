@@ -27,9 +27,20 @@ public class Player : MonoBehaviour
 
     private bool showingText = false;
 
+    public float Battery
+    {
+        get { return battery; }
+    }
+
     public bool IsCharging
     {
+        get { return isCharging; }
         set { isCharging = value; }
+    }
+
+    public float MaxCharge
+    {
+        get { return maxBattery; }
     }
 
     protected void Awake()
@@ -58,7 +69,9 @@ public class Player : MonoBehaviour
         if (controller.velocity.sqrMagnitude > 0.0001f)
         {
             if (!audio.isPlaying)
+            {
                 audio.Play();
+            }
             else
                 audio.pitch = Mathf.Clamp(controller.velocity.magnitude, 0, 10);
         }
