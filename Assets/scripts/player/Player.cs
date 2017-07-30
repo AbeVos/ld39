@@ -60,6 +60,11 @@ public class Player : MonoBehaviour
         else
         {
             battery -= Time.deltaTime;
+
+            if (battery < 0f)
+            {
+                GameManager.GameOver();
+            }
         }
 
         // Hacking interface
