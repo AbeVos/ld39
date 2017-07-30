@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private static ScreenFader fader;
     private static Player player;
+    private static ChargePad checkpoint;
 
     private static State currentState = State.FadeIn;
 
@@ -23,6 +24,12 @@ public class GameManager : MonoBehaviour
 
     public static Player Player
     { get { return player; } }
+
+    public static ChargePad Checkpoint
+    {
+        set { checkpoint = value; }
+        get { return checkpoint; }
+    }
 
     protected void Awake()
     {
@@ -37,13 +44,29 @@ public class GameManager : MonoBehaviour
 
     private static void SetState(State newState)
     {
+        State previousState = currentState;
         currentState = newState;
+
+        Debug.Log("SetState: " + currentState);
+
+        if (previousState == State.FadeOut)
+        {
+            
+        }
     }
 
     public static void GameOver()
     {
         SetState(State.FadeOut);
-        fader.FadeOut(3f, EndGame);
+
+        if (checkpoint == null)
+        {
+            fader.FadeOut(2f, EndGame);
+        }
+        else
+        {
+            fader.FadeOut(2f, ReturnToCheckPoint);
+        }
     }
 
     private void StartGame()
@@ -55,5 +78,20 @@ public class GameManager : MonoBehaviour
     private static void EndGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    private static void ReturnToCheckPoint()
+    {
+        Debug.Log("Reset cameras");
+
+        foreach (SecurityCam cam in FindObjectsOfType<SecurityCam>())
+        {
+            cam.Reset();
+        }
+
+        player.Checkpoint();
+
+        fader.FadeIn(1f, null);
+        SetState(State.Game);
     }
 }

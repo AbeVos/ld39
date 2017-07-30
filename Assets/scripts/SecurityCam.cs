@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecurityCam : MonoBehaviour
+public class SecurityCam : MonoBehaviour, IHackable
 {
     private enum State
     {
@@ -34,6 +34,7 @@ public class SecurityCam : MonoBehaviour
     private Vector3 patrolStartPosition;
 
     new private Light light;
+    private Material material;
 
     protected void Awake()
     {
@@ -74,6 +75,8 @@ public class SecurityCam : MonoBehaviour
                 Mathf.Sin(Mathf.PI * stateTime - 0.5f * Mathf.PI) * Vector3.forward);
 
         cam.LookAt(patrolTarget, Vector3.up);
+
+        light.intensity = Mathf.Lerp(light.intensity, 1, 2f * Time.deltaTime);
 
         // Cast random rays to check for player
         RaycastHit hit;
@@ -118,6 +121,19 @@ public class SecurityCam : MonoBehaviour
 
     private void OffBehaviour()
     {
+        patrolTarget.position = Vector3.Lerp(patrolTarget.position,
+            transform.position + Vector3.down, Time.deltaTime);
+
+        cam.LookAt(patrolTarget, Vector3.up);
+
+        light.intensity = Mathf.Lerp(light.intensity, 0, 2f * Time.deltaTime);
+
+        stateTime += Time.deltaTime;
+
+        if (stateTime >= 10f && GameManager.CurrentState == GameManager.State.Game)
+        {
+            SetState(State.Patrol);
+        }
     }
 
     private void SetState(State newState)
@@ -156,5 +172,15 @@ public class SecurityCam : MonoBehaviour
         vector = rotation * vector;
 
         return vector;
+    }
+
+    public void Hack()
+    {
+        SetState(State.Off);
+    }
+
+    public void Reset()
+    {
+        SetState(State.Patrol);
     }
 }
