@@ -6,8 +6,13 @@ public class HackInterface : MonoBehaviour, IActivatable
 {
     [SerializeField]
     private GameObject target;
+    [SerializeField]
+    private string tooltipMessage = "Kutvliegen";
 
     private bool isActivated = false;
+
+    public string TooltipMessage
+    { get { return tooltipMessage; } }
 
     public void Activate()
     {

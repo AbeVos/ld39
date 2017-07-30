@@ -7,6 +7,11 @@ public class Exit : MonoBehaviour, IActivatable
 {
     [SerializeField]
     private int sceneIndex = 2;
+    [SerializeField]
+    private string tooltipMessage = "Kutvliegen";
+
+    public string TooltipMessage
+    { get { return tooltipMessage; } }
 
     public void Activate()
     {

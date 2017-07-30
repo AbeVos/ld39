@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IActivatable
 {
+    string TooltipMessage { get; }
     void Activate();
 }

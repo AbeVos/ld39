@@ -15,9 +15,12 @@ public class Player : MonoBehaviour
 
     new private Camera camera;
     private CharacterController controller;
+    private Tooltip tooltip;
 
     private float battery;
     private bool isCharging = false;
+
+    private bool showingText = false;
 
     public bool IsCharging
     {
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
     {
         camera = GetComponentInChildren<Camera>();
         controller = GetComponent<CharacterController>();
+        tooltip = FindObjectOfType<Tooltip>();
 
         battery = maxBattery;
     }
@@ -73,11 +77,31 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(camera.transform.position, camera.transform.forward,
             out hit, selectionRange))
         {
+            Debug.Log(hit.collider.name);
             IActivatable activatable = hit.collider.GetComponent<IActivatable>();
-            if (activatable != null && Input.GetMouseButtonDown(0))
+            if (activatable != null)
             {
-                activatable.Activate();
+                if (!showingText)
+                {
+                    showingText = true;
+                    tooltip.ShowText(activatable.TooltipMessage, -1);
+                }
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    activatable.Activate();
+                }
             }
+            else if (showingText)
+            {
+                showingText = false;
+                tooltip.HideText();
+            }
+        }
+        else if (showingText)
+        {
+            showingText = false;
+            tooltip.HideText();
         }
     }
 
