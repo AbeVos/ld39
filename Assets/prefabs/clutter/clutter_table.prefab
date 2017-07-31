@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4562342651485682}
   m_Layer: 0
-  m_Name: clutter_table
+  m_Name: clutter_table_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
