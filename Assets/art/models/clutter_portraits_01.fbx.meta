@@ -11,6 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: portrets_01
     4300002: portraits_01
+    6400000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
@@ -40,11 +41,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    addColliders: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
