@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 3fe5882de52f81949acfdb32d6e105cd
-timeCreated: 1501532707
+timeCreated: 1501533551
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Battery
     21300002: Logo
+    21300004: Filling
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -93,7 +94,7 @@ TextureImporter:
         width: 452
         height: 1002
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -102,10 +103,24 @@ TextureImporter:
       name: Logo
       rect:
         serializedVersion: 2
-        x: 665
-        y: 19
+        x: 716
+        y: 17
         width: 280
         height: 983
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Filling
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 24
+        width: 130
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
