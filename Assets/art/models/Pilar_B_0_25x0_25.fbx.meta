@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 54de3a404f188dd439b7e1048dc820dd
-timeCreated: 1501362642
+guid: be920d6f7da52b347bc888cfde711bc7
+timeCreated: 1501510121
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wall_DoorFrame_2x3x0_25
-    6400000: //RootNode
+    4300000: Pilar_B_0_25x0_25
   materials:
     importMaterials: 0
     materialName: 0
@@ -40,7 +39,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
@@ -61,7 +60,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8df48cfa7792b384299f37bccc24d147
-timeCreated: 1501360560
+guid: e8a7caf0e9383774ab65cd5b1c57431e
+timeCreated: 1501510121
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wall_2x3x0_25
-    6400000: //RootNode
+    4300000: Pilar_D_0_25x0_25
   materials:
     importMaterials: 0
     materialName: 0
@@ -40,7 +39,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
@@ -61,7 +60,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

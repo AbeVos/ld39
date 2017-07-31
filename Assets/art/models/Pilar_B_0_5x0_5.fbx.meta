@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 701d318b1c6f9884f81d77b7f5b6dee5
-timeCreated: 1501448373
+guid: 29ce33ca23b49e74199d4fd5a3b1c3c4
+timeCreated: 1501510119
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Floor_2X3
-    6400000: //RootNode
+    4300000: Pilar_B_0_5x0_5
   materials:
     importMaterials: 0
     materialName: 0
@@ -40,7 +39,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
