@@ -36,7 +36,9 @@ public class ScreenFader : MonoBehaviour
 
         while (true)
         {
-            faderImage.color = Color.Lerp(opaque, invisible, t);
+            float theta = t * Mathf.Exp(t) / Mathf.Exp(1);
+
+            faderImage.color = Color.Lerp(opaque, invisible, theta);
 
             t += Time.deltaTime / time;
 
@@ -59,7 +61,9 @@ public class ScreenFader : MonoBehaviour
 
         while (t < 1f)
         {
-            faderImage.color = Color.Lerp(invisible, opaque, t);
+            float theta = t * Mathf.Exp(t) / Mathf.Exp(1);
+
+            faderImage.color = Color.Lerp(invisible, opaque, theta);
 
             t += Time.deltaTime / time;
 

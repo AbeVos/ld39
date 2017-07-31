@@ -5,7 +5,7 @@ using UnityEngine;
 public class HackInterface : MonoBehaviour, IActivatable
 {
     [SerializeField]
-    private GameObject target;
+    private GameObject[] targets;
     [SerializeField]
     private string tooltipMessage = "Kutvliegen";
 
@@ -16,13 +16,16 @@ public class HackInterface : MonoBehaviour, IActivatable
 
     public void Activate()
     {
-        if (isActivated || target == null)
+        if (isActivated || targets.Length == 0)
             return;
-        
-        IHackable hackable = target.GetComponent<IHackable>();
 
-        if (hackable != null)
-            hackable.Hack();
+        foreach (GameObject target in targets)
+        {
+            IHackable hackable = target.GetComponent<IHackable>();
+
+            if (hackable != null)
+                hackable.Hack();
+        }
 
         StartCoroutine(ActivateCoroutine());
 
