@@ -138,11 +138,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    protected void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 100, 40), "Battery: " + battery);
-    }
-
     public void Checkpoint()
     {
         Debug.Log("Change position");
