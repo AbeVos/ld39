@@ -26,9 +26,9 @@ public class IntroManager : MonoBehaviour
     {
         if (introRunning)
         {
-            text.rectTransform.position += 40f * Time.deltaTime * Vector3.up;
+            text.rectTransform.position += 30f * Time.deltaTime * Vector3.up;
         
-            if (text.rectTransform.position.y >= 750f)
+            if (text.rectTransform.position.y >= 750f || Input.anyKeyDown || Input.GetMouseButtonDown(0))
             {
                 fader.FadeOut(3f, StartGame);
             }
