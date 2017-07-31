@@ -15,7 +15,7 @@ public class ReplaceSelection : ScriptableWizard
     public GameObject ReplacementObject;
     public bool KeepOriginals;
 
-    [MenuItem("GameObject/-Replace Selection...")]
+    [MenuItem("Tools/Replace Selection...")]
     private static void CreateWizard()
     {
         DisplayWizard(
@@ -66,12 +66,12 @@ public class ReplaceSelection : ScriptableWizard
             gTransform.localRotation = t.localRotation;
         }
 
-        if (!keep)
+        if (keep) return;
+
+        foreach (GameObject g in Selection.gameObjects)
         {
-            foreach (GameObject g in Selection.gameObjects)
-            {
-                DestroyImmediate(g);
-            }
+            DestroyImmediate(g);
         }
+
     }
 }

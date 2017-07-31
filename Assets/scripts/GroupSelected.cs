@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
+using System.Linq;
 
 public class GroupSelected : EditorWindow
 {
@@ -9,17 +9,13 @@ public class GroupSelected : EditorWindow
     ///  Basically a nice re-creation of Maya grouping!
     /// </summary>;
 
-    [MenuItem("GameObject/Group Selected", priority = 80)]
-    static void Init()
+    [MenuItem("Tools/Group Selected", priority = 80)]
+    private static void Init()
     {
         Transform[] selected = Selection.GetTransforms(SelectionMode.ExcludePrefab | SelectionMode.TopLevel);
 
         GameObject emptyNode = new GameObject();
-        Vector3 averagePosition = Vector3.zero;
-        foreach (Transform node in selected)
-        {
-            averagePosition += node.position;
-        }
+        Vector3 averagePosition = selected.Aggregate(Vector3.zero, (current, node) => current + node.position);
         if (selected.Length > 0)
         {
             averagePosition /= selected.Length;

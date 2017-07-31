@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 150adcc48b90245ef901d38bce0cc9a3
-timeCreated: 1501328062
+guid: 1b9549f775e00a747a6c33398808d9b4
+timeCreated: 1501510118
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cone
-    4300002: unity_cone
+    4300000: Pilar_C_0_25x0_25
   materials:
     importMaterials: 0
     materialName: 0
@@ -52,10 +51,10 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
+    secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
-    secondaryUVPackMargin: 4
-    useFileScale: 0
+    secondaryUVPackMargin: 8
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
