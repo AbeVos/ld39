@@ -42,7 +42,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1570772599877708
 GameObject:
@@ -236,7 +236,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1570772599877708}
-  m_Mesh: {fileID: 4300000, guid: 3b48c8e77369b0842bfc199d158f35a9, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 653f2451f6715e947993c8c5ac409456, type: 3}
 --- !u!33 &33102440598418386
 MeshFilter:
   m_ObjectHideFlags: 1
