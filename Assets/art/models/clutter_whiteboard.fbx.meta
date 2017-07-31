@@ -6,11 +6,52 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: camera
+    100004: chargepad
+    100006: hackInterface
+    100008: plant_00
+    100010: table
+    100012: watercooler
+    100014: whiteboard
     400000: //RootNode
+    400002: camera
+    400004: chargepad
+    400006: hackInterface
+    400008: plant_00
+    400010: table
+    400012: watercooler
+    400014: whiteboard
     2300000: //RootNode
+    2300002: camera
+    2300004: chargepad
+    2300006: hackInterface
+    2300008: plant_00
+    2300010: table
+    2300012: watercooler
+    2300014: whiteboard
     3300000: //RootNode
+    3300002: camera
+    3300004: chargepad
+    3300006: hackInterface
+    3300008: plant_00
+    3300010: table
+    3300012: watercooler
+    3300014: whiteboard
     4300000: whiteboard
+    4300002: table
+    4300004: watercooler
+    4300006: plant_00
+    4300008: chargepad
+    4300010: hackInterface
+    4300012: camera
     6400000: //RootNode
+    6400002: camera
+    6400004: chargepad
+    6400006: hackInterface
+    6400008: plant_00
+    6400010: table
+    6400012: watercooler
+    6400014: whiteboard
   materials:
     importMaterials: 0
     materialName: 0

@@ -349,6 +349,11 @@ Prefab:
       propertyPath: m_Name
       value: HackInterface (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 23328849434341436, guid: cd6a3c518d5794f898ae7b08d0772862,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b049b006d223f154e8ccc4df2955605c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd6a3c518d5794f898ae7b08d0772862, type: 2}
   m_IsPrefabParent: 0
@@ -1503,6 +1508,19 @@ Prefab:
     - target: {fileID: 4099349444691814, guid: e2e169554080f45d7871f065a893065f, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 33151471992380892, guid: e2e169554080f45d7871f065a893065f,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 4da2f65996924493ba0c32cc303a90ed, type: 3}
+    - target: {fileID: 4861628817235100, guid: e2e169554080f45d7871f065a893065f, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861628817235100, guid: e2e169554080f45d7871f065a893065f, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2e169554080f45d7871f065a893065f, type: 2}
