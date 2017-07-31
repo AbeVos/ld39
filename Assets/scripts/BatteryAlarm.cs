@@ -30,8 +30,7 @@ public class BatteryAlarm : MonoBehaviour
             if (player.Battery < powerDownThreshold)
             {
                 float x = player.Battery / powerDownThreshold;
-                float e = Mathf.Exp(1);
-                float pitch = Mathf.PI * (e - Mathf.Exp(1 - x)) / (2f * e);
+                float pitch  = x * Mathf.Exp(x) / Mathf.Exp(1);
 
                 audio.pitch = pitch;
             }

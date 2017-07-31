@@ -130,10 +130,10 @@ public class SecurityCam : MonoBehaviour, IHackable
 
         stateTime += Time.deltaTime;
 
-        if (stateTime >= 10f && GameManager.CurrentState == GameManager.State.Game)
+        /*if (stateTime >= 10f && GameManager.CurrentState == GameManager.State.Game)
         {
             SetState(State.Patrol);
-        }
+        }*/
     }
 
     private void SetState(State newState)
