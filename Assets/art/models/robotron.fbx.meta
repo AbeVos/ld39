@@ -1,15 +1,25 @@
 fileFormatVersion: 2
-guid: c4222eb476aebe141aea9829dc120b85
-timeCreated: 1501448373
+guid: fda3ade4ea85148e984323ee131d0754
+timeCreated: 1501496259
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Door
+    100000: Cylinder.001
+    100002: //RootNode
+    100004: Circle.001
+    400000: Cylinder.001
+    400002: //RootNode
+    400004: Circle.001
+    2300000: Cylinder.001
+    2300002: //RootNode
+    2300004: Circle.001
+    3300000: Cylinder.001
+    3300002: //RootNode
+    3300004: Circle.001
+    4300000: Cylinder
+    4300002: Cylinder.001
+    4300004: Circle.001
   materials:
     importMaterials: 0
     materialName: 0
@@ -45,16 +55,16 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
+    secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
-    secondaryUVPackMargin: 4
-    useFileScale: 1
+    secondaryUVPackMargin: 8
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
