@@ -464,7 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionRange: 1
   speed: 1
-  maxBattery: 30
+  maxCharge: 30
   chargeRate: 5
 --- !u!114 &114703904139245096
 MonoBehaviour:

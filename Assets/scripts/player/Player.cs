@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     [Space]
     [SerializeField]
-    private float maxBattery = 10f;
+    private float maxCharge = 10f;
     [SerializeField]
     private float chargeRate = 5f;
 
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     public float MaxCharge
     {
-        get { return maxBattery; }
+        get { return maxCharge; }
     }
 
     protected void Awake()
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         audio = GetComponent<AudioSource>();
         tooltip = FindObjectOfType<Tooltip>();
 
-        battery = maxBattery;
+        battery = maxCharge;
     }
 
     protected void Update()
@@ -86,9 +86,9 @@ public class Player : MonoBehaviour
         {
             battery += Time.deltaTime * chargeRate;
 
-            if (battery > maxBattery)
+            if (battery > maxCharge)
             {
-                battery = maxBattery;
+                battery = maxCharge;
             }
             else
             {
@@ -148,5 +148,6 @@ public class Player : MonoBehaviour
         Debug.Log("Change position");
         transform.position = GameManager.Checkpoint.transform.position;
         transform.rotation = GameManager.Checkpoint.transform.rotation;
+        battery = maxCharge;
     }
 }

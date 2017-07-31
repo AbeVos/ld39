@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ChargePad : MonoBehaviour
 {
+    [SerializeField]
+    private Color emissionColor = Color.yellow;
+
     private AudioSource audio;
+    private Material material;
 
     private bool player = false;
 
     protected void Awake()
     {
         audio = GetComponent<AudioSource>();
+        material = GetComponentInChildren<Renderer>().material;
     }
 
     protected void Update()
@@ -21,10 +26,17 @@ public class ChargePad : MonoBehaviour
             {
                 audio.Play();
             }
+
+            material.SetColor("_EmissionColor",
+                Color.Lerp(material.GetColor("_EmissionColor"), 
+                    (1 - Mathf.Sin(2f * Mathf.PI * Time.time)) / 2 * emissionColor,
+                    2f * Time.deltaTime));
         }
-        else if (audio.isPlaying)
+        else
         {
-            //audio.Stop();
+            material.SetColor("_EmissionColor",
+                Color.Lerp(material.GetColor("_EmissionColor"), Color.black,
+                    2f * Time.deltaTime));
         }
     }
 
