@@ -5,20 +5,27 @@ using UnityEngine.UI;
 
 public class BatController : MonoBehaviour
 {
-    [SerializeField]
     private Player player;
-
+    [SerializeField]
     private Image[] bars;
     private float barScale;
 
-	// Use this for initialization
-    private void Start ()
+    private void Awake()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    private void Start()
+    {
+        player = GameManager.Player;
+    }
+
+    private void Update()
+    {
+        float battery = bars.Length * player.Battery / player.MaxCharge;
+
+        for (int i = 0; i < bars.Length; i++)
+        {
+            bars[i].fillAmount = battery - (bars.Length - i-1);
+        }
+    }
 }
