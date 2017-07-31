@@ -1,9 +1,11 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 
 public class ApplySelectedPrefabs : EditorWindow
 {
+
     public delegate void ApplyOrRevert(GameObject goCurrentGo, Object objPrefabParent, ReplacePrefabOptions eReplaceOptions);
     [MenuItem("Tools/Apply all selected prefabs %#a")]
     private static void ApplyPrefabs()
@@ -77,5 +79,6 @@ public class ApplySelectedPrefabs : EditorWindow
         PrefabUtility.ReconnectToLastPrefab(goCurrentGo);
         PrefabUtility.RevertPrefabInstance(goCurrentGo);
     }
-
 }
+
+#endif

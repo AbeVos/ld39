@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Linq;
 
 public class GroupSelected : EditorWindow
 {
+
+
     /// <summary>
     ///  Creates an empty node at the center of all selected nodes and parents all selected underneath it. 
     ///  Basically a nice re-creation of Maya grouping!
@@ -28,3 +31,4 @@ public class GroupSelected : EditorWindow
         }
     }
 }
+#endif

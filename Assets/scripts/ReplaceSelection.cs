@@ -3,12 +3,14 @@
  * Original coding by 'yesfish', nabbed from Unity Forums
  * 'keep parent' added by Dave A (also removed 'rotation' option, using localRotation
  */
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
 public class ReplaceSelection : ScriptableWizard
 {
+
     private static GameObject replacement;
     private static bool keep;
 
@@ -75,3 +77,4 @@ public class ReplaceSelection : ScriptableWizard
 
     }
 }
+#endif
