@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    private ScreenFader fader;
+    [SerializeField]
     private Text text;
+
+    private ScreenFader fader;
 
     private Color textInvisible = new Color(1, 1, 1, 0);
     private Color textOpaque = Color.white;
@@ -17,7 +19,6 @@ public class MainMenuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         fader = FindObjectOfType<ScreenFader>();
-        text = FindObjectOfType<Text>();
         text.color = textInvisible;
     }
 
