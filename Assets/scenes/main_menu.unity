@@ -488,6 +488,11 @@ Prefab:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 108662274929012936, guid: 409642166a137a24d958da455b9c6ac6,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 409642166a137a24d958da455b9c6ac6, type: 2}
   m_IsPrefabParent: 0
@@ -675,7 +680,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_AreaSize: {x: 0.8, y: 0.8}
   m_BounceIntensity: 2
   m_FalloffTable:
@@ -1369,6 +1374,11 @@ Prefab:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 108662274929012936, guid: 409642166a137a24d958da455b9c6ac6,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 409642166a137a24d958da455b9c6ac6, type: 2}
   m_IsPrefabParent: 0
@@ -1794,7 +1804,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_AreaSize: {x: 0.8, y: 0.8}
   m_BounceIntensity: 2
   m_FalloffTable:
@@ -1877,7 +1887,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_AreaSize: {x: 0.8, y: 0.8}
   m_BounceIntensity: 2
   m_FalloffTable:
@@ -3179,6 +3189,11 @@ Prefab:
         type: 2}
       propertyPath: m_Shadows.m_Type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 108662274929012936, guid: 409642166a137a24d958da455b9c6ac6,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 409642166a137a24d958da455b9c6ac6, type: 2}
