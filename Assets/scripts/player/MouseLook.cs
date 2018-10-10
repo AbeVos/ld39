@@ -29,6 +29,20 @@ public class MouseLook : MonoBehaviour
 
     protected void Update ()
     {
+        // Switch cursor lockstates
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (GameManager.CurrentState != GameManager.State.Game)
+            return;
+
         // Read the mouse input axis
         rotationX += Input.GetAxis("Mouse X") * speed.x;
         rotationY += Input.GetAxis("Mouse Y") * speed.y;
@@ -46,17 +60,6 @@ public class MouseLook : MonoBehaviour
         verticalRotator.localRotation = 
             Quaternion.SlerpUnclamped(verticalRotator.localRotation,
                 Quaternion.identity * yQuaternion, lerpSpeed * Time.deltaTime);
-
-        // Switch cursor lockstates
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
     }
 
     private float ClampAngle (float angle, float min, float max)
