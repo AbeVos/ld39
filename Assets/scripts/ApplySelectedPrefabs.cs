@@ -35,7 +35,7 @@ public class ApplySelectedPrefabs : EditorWindow
             if (prefabType != PrefabType.PrefabInstance &&
                 prefabType != PrefabType.DisconnectedPrefabInstance) continue;
             //Prefab Root;
-            var goPrefabRoot = ((GameObject)PrefabUtility.GetPrefabParent(go)).transform.root.gameObject;
+            var goPrefabRoot = ((GameObject)PrefabUtility.GetCorrespondingObjectFromSource(go)).transform.root.gameObject;
             var goCur = go;
             var bTopHierarchyFound = false;
             var bCanApply = true;
@@ -44,7 +44,7 @@ public class ApplySelectedPrefabs : EditorWindow
             while (goCur.transform.parent != null && !bTopHierarchyFound)
             {
                 //Are we still in the same prefab?
-                if (goPrefabRoot == ((GameObject)PrefabUtility.GetPrefabParent(goCur.transform.parent.gameObject)).transform.root.gameObject)
+                if (goPrefabRoot == ((GameObject)PrefabUtility.GetCorrespondingObjectFromSource(goCur.transform.parent.gameObject)).transform.root.gameObject)
                 {
                     goCur = goCur.transform.parent.gameObject;
                 }
@@ -52,7 +52,7 @@ public class ApplySelectedPrefabs : EditorWindow
                 {
                     //The gameobject parent is another prefab, we stop here
                     bTopHierarchyFound = true;
-                    if (goPrefabRoot != ((GameObject)PrefabUtility.GetPrefabParent(goCur)))
+                    if (goPrefabRoot != ((GameObject)PrefabUtility.GetCorrespondingObjectFromSource(goCur)))
                     {
                         //Gameobject is part of another prefab
                         bCanApply = false;
@@ -62,7 +62,7 @@ public class ApplySelectedPrefabs : EditorWindow
 
             if (applyOrRevert == null || !bCanApply) continue;
             iCount++;
-            applyOrRevert(goCur, PrefabUtility.GetPrefabParent(goCur), ReplacePrefabOptions.ConnectToPrefab);
+            applyOrRevert(goCur, PrefabUtility.GetCorrespondingObjectFromSource(goCur), ReplacePrefabOptions.ConnectToPrefab);
         }
         Debug.Log(iCount + " prefab" + (iCount > 1 ? "s" : "") + " updated");
     }
